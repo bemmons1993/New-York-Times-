@@ -17,4 +17,4 @@ $("button").on("click", function() {
 		newDiv.append(abstract, url, leadParagraph);
 		mainDiv.prepend(newDiv);
 	});
-});
+}); 
