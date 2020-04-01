@@ -1,6 +1,6 @@
 var apiKey = "vUFjq3MoZWkNyu7gGXylgZHRyU6QsQdH";
 var mainDiv = $(".results");
-$("button").on("click", function(event) {
+$("#run-search").on("click", function(event) {
 	event.preventDefault();
 	var searchTerms = document.getElementById("search-term").value;
 	var num = document.getElementById("num-records-select").value;
@@ -22,6 +22,8 @@ $("button").on("click", function(event) {
 	var queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchTerms}&begin_date=${start}&end_date=${end}?&api-key=${apiKey}`;
 	$.ajax({ url: queryURL, method: "GET" }).then(function(response) {
 		console.log(response);
+		mainDiv.empty();
+		response.response.docs = response.response.docs.splice(0, num);
 		response.response.docs.forEach(element => {
 			var newDiv = $("<div>").html("<br><br>");
 			var headline = $("<p>").text("Headline: " + element.headline.main);
@@ -35,4 +37,7 @@ $("button").on("click", function(event) {
 			mainDiv.prepend(newDiv);
 		});
 	});
+});
+$("#clear-all").on("click", function(event) {
+	mainDiv.empty();
 });
