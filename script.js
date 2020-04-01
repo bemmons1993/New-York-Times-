@@ -13,13 +13,15 @@ $("button").on("click", function(event) {
 	$.ajax({ url: queryURL, method: "GET" }).then(function(response) {
 		console.log(response);
 		response.response.docs.forEach(element => {
-			var newDiv = $("<div>");
-			var abstract = $("<p>").text("Headline: " + element.headline.main);
-			var url = $("<p>").text("URL: " + element.web_url);
+			var newDiv = $("<div>").html("<br><br>");
+			var headline = $("<p>").text("Headline: " + element.headline.main);
+			var url = $("<p>").html(
+				`<p>URL: <a href="${element.web_url}"  target="_blank">${element.web_url}</a></p>`
+			);
 			var leadParagraph = $("<p>").text(
 				"Lead Paragraph: " + element.lead_paragraph
 			);
-			newDiv.append(abstract, url, leadParagraph);
+			newDiv.append(headline, url, leadParagraph);
 			mainDiv.prepend(newDiv);
 		});
 	});
