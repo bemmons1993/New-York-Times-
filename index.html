@@ -25,6 +25,11 @@
                     
                     <!-- Create an HTML form for handling inputs -->
                     <form role="form">
+                        <!-- Here we record the search term -->
+                        <div class="form-group">
+                            <label for="search-term">Search Term</label>
+                            <input type="text" class="form-control" id="search-term">
+                        </div>
 
                         <!-- Here we record the number of records that the user wants to retrieve -->
                         <div class="form-group">
@@ -52,7 +57,8 @@
                         <button type="button" class="btn btn-default" id="clear-all"><i class="fa fa-trash"></i> Clear Results</button>
 
                     </form>
-
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                    <script src="script.js"></script>
                 </div>
             </div>    
         </div>    
